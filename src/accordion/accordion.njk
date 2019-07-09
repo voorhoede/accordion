@@ -1,0 +1,20 @@
+{% macro accordion(content) %}
+<div data-accordion>
+  {% for section in content.sections %}
+    <article>
+      <a name="{{ section.slug }}"></a>
+      <h3 data-accordion-toggle-title>
+        <button 
+          aria-controls="{{ section.slug }}"
+          data-index="{{ loop.index0 }}"
+          data-accordion-toggle-button>
+          {{ section.title }}
+        </button>
+      </h3>
+      <div id="{{ section.slug }}">
+        {{ section.body | safe }}
+      </div>
+    </article>
+  {% endfor %}
+</div>
+{% endmacro %}

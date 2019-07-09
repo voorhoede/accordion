@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Voorhoede Accordion</title>
+    <link rel="stylesheet" href="accordion/accordion.css">
+    <style>
+      body {
+        background-color: #EFF1F0
+      }
+    
+      .example {
+        margin-bottom: 64px;
+      }
+    
+      section:nth-child(2) [data-accordion] {
+        font-family: Helvetica, Arial, sans-serif;
+        box-shadow:
+          0 1px 10px rgba(0, 0, 0, 0.2),
+          0 1px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+      }
+    
+      section:nth-child(2) [data-accordion] h3 {
+        border-bottom: 1px solid #EFF1F0;
+      }
+    
+      section:nth-child(2) [data-accordion] article:last-child h3 {
+        border-bottom: 0;
+      }
+    
+      section:nth-child(2) [data-accordion] h3,
+      section:nth-child(2) [data-accordion] p:last-child {
+        margin: 0;
+      }
+    
+      section:nth-child(2) [data-accordion] p {
+        line-height: 1.4;
+        margin-top: 0;
+      }
+    
+      section:nth-child(2) [data-accordion] button {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 16px 48px 16px 16px;
+        background-color: #fff;
+        border: 0;
+        font-size: 1.1rem;
+        line-height: 1.4;
+        text-align: left;
+        color: #555;
+        cursor: pointer;
+        outline: none;
+      }
+    
+      section:nth-child(2) [data-accordion] button::after {
+        content: '';
+        position: absolute;
+        top: 27px;
+        right: 16px;
+        transform-origin: 8px 4px;
+        width: 16px;
+        height: 9px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 286 165'%3E%3Cpath d='M286 26L260 0 143 117 26 0 0 25l143 140L286 26z' fill='%23333333'/%3E%3C/svg%3E");
+      }
+    
+      section:nth-child(2) [data-accordion] button:hover,
+      section:nth-child(2) [data-accordion] button:focus {
+        background-color: hsl(170, 50%, 45%);
+        color: #fff;
+      }
+    
+      section:nth-child(2) [data-accordion] button:hover::after,
+      section:nth-child(2) [data-accordion] button:focus::after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 286 165'%3E%3Cpath d='M286 26L260 0 143 117 26 0 0 25l143 140L286 26z' fill='%23ffffff'/%3E%3C/svg%3E");
+      }
+    
+      section:nth-child(2) [data-accordion] h3 + * {
+        padding: 32px 16px;
+        background-color: #f3f3f3;
+      }
+    </style>
+  </head>
+  <body>
+    {% from "accordion/accordion.njk" import accordion %}
+
+    {% set accordions = 
+    [
+      {
+        "title": "Default accordion",
+        "sections": [
+          {
+            "slug": "et-hi-quidem-ita-non-sola-virtute-finem",
+            "title": "Et hi quidem ita non sola virtute finem?",
+            "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href=\"http://loripsum.net/\" target=\"_blank\">Ubi ut eam caperet aut quando?</a> <i>Haec igitur Epicuri non probo, inquam.</i> Scisse enim te quis coarguere possit? Hoc sic expositum dissimile est superiori. <b>Mihi enim satis est, ipsis non satis.</b> Nam adhuc, meo fortasse vitio, quid ego quaeram non perspicis.<p>"
+          },
+          {
+            "slug": "lorem-ipsum-dolor-sit-amet",
+            "title": "Lorem ipsum dolor sit amet?",
+            "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Theophrastus mediocriterne delectat, cum tractat locos ab Aristotele ante tractatos? Cur igitur, cum de re conveniat, non malumus usitate loqui? Praeterea sublata cognitione et scientia tollitur omnis ratio et vitae degendae et rerum gerendarum. Collatio igitur ista te nihil iuvat. Verum hoc idem saepe faciamus. Itaque dicunt nec dubitant: mihi sic usus est, tibi ut opus est facto, fac. </p>"
+          },
+          {
+            "slug": "sint-modo-partes-vitae-beatae",
+            "title": "Sint modo partes vitae beatae?",
+            "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <b>Sint modo partes vitae beatae.</b> Hoc mihi cum tuo fratre convenit. Varietates autem iniurasque fortunae facile veteres philosophorum praeceptis instituta vita superabat. Theophrasti igitur, inquit, tibi liber ille placet de beata vita? Ita enim vivunt quidam, ut eorum vita refellatur oratio. <a href=\"http://loripsum.net/\" target=\"_blank\">Si longus, levis dictata sunt.</a> </p><ul><li>Intrandum est igitur in rerum naturam et penitus quid ea postulet pervidendum;</li><li>Minime vero, inquit ille, consentit.</li><li>Duo Reges: constructio interrete.</li></ul>"
+          }
+        ]
+      },
+      {
+        "title": "Accordion with custom styling",
+        "sections": [
+          {
+            "slug": "platonis-illi-et-deinceps-qui-eorum-auditores-fuerunt",
+            "title": "Platonis illi et deinceps qui eorum auditores fuerunt?",
+            "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae autem degendae ratio maxime quidem illis placuit quieta. Suam denique cuique naturam esse ad vivendum ducem. <a href=\"http://loripsum.net/\" target=\"_blank\">Mihi enim satis est, ipsis non satis.</a> Quid, si reviviscant Platonis illi et deinceps qui eorum auditores fuerunt, et tecum ita loquantur? <p><p><b>Cave putes quicquam esse verius.</b> <i>Non laboro, inquit, de nomine.</i> Negat enim summo bono afferre incrementum diem. Vide igitur ne non debeas verbis nostris uti, sententiis tuis. <i>Scrupulum, inquam, abeunti;</i> <a href=\"http://loripsum.net/\" target=\"_blank\">Ratio quidem vestra sic cogit.</a> </p><p><b>Tu vero, inquam, ducas licet, si sequetur;</b> Est autem officium, quod ita factum est, ut eius facti probabilis ratio reddi possit. <i>Tum Triarius: Posthac quidem, inquit, audacius.</i> Duo Reges: constructio interrete. <b>Non igitur bene.</b> <a href=\"http://loripsum.net/\" target=\"_blank\">Faceres tu quidem, Torquate, haec omnia;</a> </p>"
+          },
+          {
+            "slug": "fortitudinis-quaedam-praecepta-sunt-ac-paene-leges",
+            "title": "Fortitudinis quaedam praecepta sunt ac paene leges?",
+            "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quicquid enim a sapientia proficiscitur, id continuo debet expletum esse omnibus suis partibus; Quid, de quo nulla dissensio est? Ergo in gubernando nihil, in officio plurimum interest, quo in genere peccetur. Hoc dixerit potius Ennius: Nimium boni est, cui nihil est mali. <mark>Istic sum, inquit.</mark> Ergo instituto veterum, quo etiam Stoici utuntur, hinc capiamus exordium. Duo Reges: constructio interrete. Sed quid attinet de rebus tam apertis plura requirere? Sed mehercule pergrata mihi oratio tua. Expressa vero in iis aetatibus, quae iam confirmatae sunt. </p><p>Fortitudinis quaedam praecepta sunt ac paene leges, quae effeminari virum vetant in dolore. Primum in nostrane potestate est, quid meminerimus? Quid censes in Latino fore? Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Propter nos enim illam, non propter eam nosmet ipsos diligimus. </p>"
+          },
+          {
+            "slug": "voluptas-percipitur-ex-vilissimis-rebus-quam",
+            "title": "Voluptas percipitur ex vilissimis rebus quam?",
+            "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Idem iste, inquam, de voluptate quid sentit? Tu vero, inquam, ducas licet, si sequetur; Tum Triarius: Posthac quidem, inquit, audacius. Unum nescio, quo modo possit, si luxuriosus sit, finitas cupiditates habere. </p><p>Me igitur ipsum ames oportet, non mea, si veri amici futuri sumus. Non minor, inquit, voluptas percipitur ex vilissimis rebus quam ex pretiosissimis.</p>"
+          },
+          {
+            "slug": "theophrastum-tamen-adhibeamus-ad-pleraque",
+            "title": "Theophrastum tamen adhibeamus ad pleraque?",
+            "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non modo carum sibi quemque, verum etiam vehementer carum esse? Duo Reges: constructio interrete. <b>Proclivi currit oratio.</b> Theophrastum tamen adhibeamus ad pleraque, dum modo plus in virtute teneamus, quam ille tenuit, firmitatis et roboris. Non autem hoc: igitur ne illud quidem. Tuo vero id quidem, inquam, arbitratu. In quibus doctissimi illi veteres inesse quiddam caeleste et divinum putaverunt. <b>Easdemne res?</b> </p>"
+          }
+        ]
+      }
+    ]
+  %}
+
+    {% for item in accordions %}
+      <section class="example">
+        <h2>{{ item.title | safe }}</h2>
+        {{ accordion(item) }}
+      </section>
+    {% endfor %}
+
+    <script src="./index.js"></script>
+  </body>
+</html>
