@@ -6,7 +6,7 @@
 
 ## Demo
 
-View the [demo](https://voorhoede-accordion-block.netlify.com/).
+View the [demo](https://accordion.netlify.com/).
 
 
 ## Keyboard support
